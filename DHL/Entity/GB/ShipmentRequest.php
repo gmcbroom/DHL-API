@@ -192,5 +192,6 @@ class ShipmentRequest extends Base
             'length' => '1',
             'enumeration' => 'Y,N',
         ),
+        
     );
 }
