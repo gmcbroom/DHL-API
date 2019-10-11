@@ -201,6 +201,14 @@ class ShipmentRequest extends Base
             'type' => 'string',
             'required' => false,
             'subobject' => false,
-        )   
+        ),
+        'UseIFSInvoice' => array(
+            'type' => 'YesNo',
+            'required' => false,
+            'subobject' => false,
+            'comment' => 'Boolean flag',
+            'length' => '1',
+            'enumeration' => 'Y,N',
+        )
     );
 }
