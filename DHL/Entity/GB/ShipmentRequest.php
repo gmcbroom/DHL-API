@@ -192,6 +192,15 @@ class ShipmentRequest extends Base
             'length' => '1',
             'enumeration' => 'Y,N',
         ),
-        
+        'DHLInvoiceLanguageCode' => array(
+            'type' => 'string',
+            'required' => false,
+            'subobject' => false,
+        ), 
+        'DHLInvoiceType' => array(
+            'type' => 'string',
+            'required' => false,
+            'subobject' => false,
+        )   
     );
 }
