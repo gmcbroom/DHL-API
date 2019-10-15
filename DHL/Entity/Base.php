@@ -136,11 +136,11 @@ abstract class Base extends BaseDataType
         $xmlWriter->startElement('req:' . $this->_serviceName);
         $xmlWriter->writeAttribute('xmlns:req', self::DHL_REQ);
         $xmlWriter->writeAttribute('xmlns:xsi', self::DHL_XSI);
-        $xmlWriter->writeAttribute('xsi:schemaLocation', self::DHL_REQ . ' ' .$this->_serviceXSD);
+        $xmlWriter->writeAttribute('xsi:schemaLocation', 'http://www.dhl.com ship-val-global-req.xsd');
     
         if ($this->_displaySchemaVersion) 
         {
-            $xmlWriter->writeAttribute('schemaVersion', '1.0');
+            $xmlWriter->writeAttribute('schemaVersion', '6.2');
         }
 
         if (null !== $this->_xmlNodeName) 
@@ -154,8 +154,15 @@ abstract class Base extends BaseDataType
         {
             $xmlWriter->writeElement($name, $this->$name);
         }
-        $xmlWriter->endElement(); // End of Request
         $xmlWriter->endElement(); // End of ServiceHeader
+
+        $xmlWriter->startElement('MetaData');
+        $xmlWriter->writeElement('SoftwareName', 'IFS');
+        $xmlWriter->writeElement('SoftwareVersion', '6.2');
+        $xmlWriter->endElement(); // End of MetaData
+
+        $xmlWriter->endElement(); // End of Request
+
 
         foreach ($this->_bodyParams as $name => $infos) 
         {
